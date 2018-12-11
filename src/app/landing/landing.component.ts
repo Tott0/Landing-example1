@@ -32,6 +32,53 @@ import { getErrorMessage } from '@core/static-methods';
       transition('back => front', [
         animate('0ms')
       ])
+    ]),
+    trigger('slideLeftRight', [
+      state('left', style({
+        transform: 'translateX(-100%)'
+      })),
+      state('right', style({
+        transform: 'translateX(100%)'
+      })),
+      state('normalFromLeft', style({
+        transform: 'translateX(0)'
+      })),
+      state('normalFromRight', style({
+        transform: 'translateX(0)'
+      })),
+      transition('* => left', [
+        style({
+          transform: 'translateX(0)'
+        }),
+        animate('600ms ease-in-out', style({
+          transform: 'translateX(-100%)'
+        }))
+      ]),
+      transition('* => right', [
+        style({
+          transform: 'translateX(0)'
+        }),
+        animate('6000s ease-in-out', style({
+          transform: 'translateX(100%)'
+        }))
+      ]),
+      transition('* => normalFromLeft', [
+        style({
+          transform: 'translateX(-100%)'
+        }),
+        animate('600ms ease-in-out', style({
+          transform: 'translateX(0)'
+        }))
+      ]),
+      transition('* => normalFromRight', [
+        style({
+          transform: 'translateX(100%)'
+        }),
+        animate('600ms ease-in-out', style({
+          transform: 'translateX(0)'
+        }))
+      ]),
+      transition('* => *', [ animate('600ms ease-in-out') ]),
     ])
   ]
 })
@@ -42,11 +89,12 @@ export class LandingComponent implements OnInit, OnDestroy {
       id: 1,
       img: '/assets/images/carousel-bg-1.jpg',
       text: '<span>SECURE</span> AND <span>EASY WAY</span> <br> TO BITCOIN',
-      button: 'LEARN MORE'
+      button: 'LEARN MORE',
+      animState: 'normal'
     },
     {
       id: 2,
-      img: '/assets/images/carousel-bg-1.jpg',
+      img: '/assets/images/carousel-bg-2.jpg',
       text: '<span>BITCOIN</span> EXCHANGE <br> YOU CAN <span>TRUST</span>',
       button: 'OUR PRICES'
     }
@@ -275,6 +323,34 @@ export class LandingComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       // this.priceOfferFlipState = 'front';
     }, 201);
+  }
+
+  triggerCarouselLeft() {
+    const prevIndex = this.carouselIndex;
+    if (--this.carouselIndex < 0) {
+      this.carouselIndex = this.carouselItems.length - 1;
+    }
+    console.log(prevIndex);
+    console.log(this.carouselIndex);
+    this.carouselItems[prevIndex].animState = 'right';
+    this.carouselItems[this.carouselIndex].animState = 'normalFromLeft';
+  }
+  triggerCarouselRight() {
+    const prevIndex = this.carouselIndex;
+    if (++this.carouselIndex >= this.carouselItems.length) {
+      this.carouselIndex = 0;
+    }
+    console.group('group');
+
+    console.log('prev ' + prevIndex, this.carouselItems[prevIndex].animState);
+    console.log('sel ' + this.carouselIndex, this.carouselItems[this.carouselIndex].animState);
+
+    this.carouselItems[prevIndex].animState = 'left';
+    this.carouselItems[this.carouselIndex].animState = 'normalFromRight';
+    
+    console.log('prev ' + prevIndex, this.carouselItems[prevIndex].animState);
+    console.log('sel ' + this.carouselIndex, this.carouselItems[this.carouselIndex].animState);
+    console.groupEnd();
   }
 
 }

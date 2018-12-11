@@ -15,10 +15,13 @@ header {
   right: 0;
   z-index: 999;
   min-height: var(--header-height);
-  font-size: 1.5rem;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
 
+  mat-toolbar.mat-toolbar{
+    font-size: 1em;
+  }
   mat-toolbar.top-toolbar {
     @include for-tablet-landscape-up {
       height: var(--top-header-height);
@@ -50,7 +53,7 @@ header {
       }
     }
     .trends{
-      font-size: 0.75em;
+      font-size: 1em;
       li{
         display: flex;
         flex-direction: column;
@@ -61,7 +64,7 @@ header {
           font-weight: 800;
         }
         .subtitle{
-          font-size: 0.9em;
+          font-size: 0.85em;
         }
       }
     }
@@ -102,8 +105,20 @@ header {
       width: 100%;
       justify-content: center;
       nav{
+        ul{
+          margin: 0;
+          padding: 0;
+          display: flex;
+
+          li{
+            list-style-type: none;
+          }
+        }
         a{
           cursor: pointer;
+          text-decoration: none;
+          font-size: 1em;
+          padding: 1em;
         }
       }
     }

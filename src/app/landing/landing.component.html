@@ -3,21 +3,32 @@
 
 
   <section class="carousel-section">
-    <div class="shadow-overlay"></div>
+    <!-- <div class="shadow-overlay"></div> -->
     <div class="carousel">
-      <ng-container *ngFor="let car of carouselItems">
-
-        <div class="carousel-item" *ngIf="car.id === carouselItems[carouselIndex].id">
-          <div class="bg" [style.background-image]="'url('+car.img+')'"></div>
-          <div class="carousel-content">
-            <div class="content-title" [innerHtml]="car.text"></div>
-            <div class="content-actions" *ngIf="car.button">
-              <button mat-stroked-button color="primary" routerLink="['prices']">{{ car.button }}</button>
+      <div class="carousel-inner">
+        
+        <ng-container *ngFor="let car of carouselItems">
+          <div class="carousel-item" [ngClass]="{'active': car.id === carouselItems[carouselIndex].id}" [@slideLeftRight]="car.animState" [style.background-image]="'url('+car.img+')'">
+            <div class="carousel-content">
+              <div class="container">
+              
+                <div class="content-title" [innerHtml]="car.text"></div>
+                <div class="content-actions" *ngIf="car.button">
+                  <button mat-stroked-button color="primary" routerLink="['prices']">{{ car.button }}</button>
+                </div>
+              </div>
             </div>
-
           </div>
-        </div>
-      </ng-container>
+        </ng-container>
+
+      </div>
+
+      <a class="left carousel-control" href="#" (click)="triggerCarouselLeft()">
+        <span><i class="fas fa-angle-left"></i></span>
+      </a>
+      <a class="right carousel-control" href="#" (click)="triggerCarouselRight()">
+        <span><i class="fas fa-angle-right"></i></span>
+      </a>
     </div>
   </section>
 

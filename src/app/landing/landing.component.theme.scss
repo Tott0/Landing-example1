@@ -29,6 +29,11 @@
           }
         }
       }
+      .carousel-control{
+        a, span, i {
+          color: mat-color($primary);
+        }
+      }
     }
     .features-section {
       .features.row {
