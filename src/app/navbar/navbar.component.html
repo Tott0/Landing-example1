@@ -1,0 +1,160 @@
+<header class="header">
+  <mat-toolbar class="top-toolbar">
+    <div class="container">
+      <div class="row">
+        <a routerLink="/" class="logo">
+          BitcoinWorld
+          <!-- <img src="assets/images/caxtor-dark-big.png"> -->
+        </a>
+
+        <div class="filler no-min"></div>
+
+        <ul class="trends">
+          <li>
+            <span class="value">
+              9,450 USD
+            </span>
+            <span class="subtitle">
+              Last trade price
+            </span>
+
+          </li>
+
+          <li>
+            <span class="value">
+              +5.26%
+            </span>
+            <span class="subtitle">
+              24 hour price
+            </span>
+          </li>
+
+          <li>
+            <span class="value">
+              12.820 BTC
+            </span>
+            <span class="subtitle">
+              24 hour volume
+            </span>
+          </li>
+
+          <li>
+            <span class="value">
+              2,231,775
+            </span>
+            <span class="subtitle">
+              active traders
+            </span>
+          </li>
+
+          <li>
+            <span class="value highlight">
+              $3476.40
+              <span class="trend-indicator" [ngClass]="true ? 'up' : 'down'">
+                <i class="fas fa-caret-up"></i>
+              </span>
+            </span>
+            <span class="subtitle">
+              Live Bitcoin price
+            </span>
+          </li>
+        </ul>
+
+        <div class="filler no-min"></div>
+
+        <ng-container *ngIf="authService.user">
+          <button mat-button [matMenuTriggerFor]="authMenu" class="menu-auth">
+            <!-- <img src="assets/images/auth_logo.png"> -->
+            <span class="button-text">{{ authService.user.user.profile.fullName }}</span>
+            <i class="fas fa-caret-down fa-lg"></i>
+          </button>
+          <mat-menu #authMenu="matMenu" class="temp-menu" xPosition="after">
+            <button mat-menu-item routerLink="/cuenta/perfil" *ngIf="canShow(1)">
+              <i class="fas fa-cog"></i>
+              <span class="button-text">Mi Perfil</span>
+            </button>
+            <button mat-menu-item routerLink="/temproute_client" *ngIf="canShow(2)">
+              <i class="fas fa-cog"></i>
+              <span class="button-text">Panel Cliente</span>
+            </button>
+            <button mat-menu-item routerLink="/temproute_owner" *ngIf="canShow(3)">
+              <i class="fas fa-cog"></i>
+              <span class="button-text">Panel Arrendador</span>
+            </button>
+            <button mat-menu-item (click)="authService.logout()">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="button-text">Cerrar Sesión</span>
+            </button>
+          </mat-menu>
+        </ng-container>
+
+        <nav class="auth-actions">
+          <ul>
+            <li>
+              <button class="btn-login" mat-stroked-button color="primary">
+                <span class="icon">
+                  <i class="fas fa-user"></i>
+                </span>
+                SIGN IN
+              </button>
+            </li>
+            <li>
+              <button class="btn-signup" mat-flat-button color="primary">
+                <span class="icon">
+                  <i class="fas fa-user-plus"></i>
+                </span>
+                REGISTER
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+
+
+
+  </mat-toolbar>
+  <mat-toolbar class="fixed-toolbar">
+    <div class="row">
+
+      <nav>
+        <ul class="nav navbar-nav">
+          <li class="active"><a routerLink="['']">HOME</a></li>
+          <li><a routerLink="['about-us']">ABOUT US</a></li>
+          <li><a routerLink="['services']">SERVICES</a></li>
+          <li><a routerLink="['pricing']">PRICING</a></li>
+          <li>
+            <a [matMenuTriggerFor]="menu">BLOG <i class="fas fa-caret-down"></i></a>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>RIGHT SIDEBAR</button>
+              <button mat-menu-item>LEFT SIDEBAR</button>
+              <button mat-menu-item>GRID NO SIDEBAR</button>
+              <button mat-menu-item>SINGLE POST</button>
+            </mat-menu>
+          </li>
+          <li class="dropdown">
+            <a [matMenuTriggerFor]="menu2">PAGES <i class="fas fa-caret-down"></i></a>
+            <mat-menu #menu2="matMenu">
+              <button mat-menu-item>REGISTER PAGE</button>
+              <button mat-menu-item>LOGIN PAGE</button>
+              <button mat-menu-item>SHOPPING CART</button>
+              <button mat-menu-item>SHOPPING CHECKOUT</button>
+              <button mat-menu-item>FAQ PAGE</button>
+              <button mat-menu-item>404 PAGE</button>
+              <button mat-menu-item>SERVER ERROR PAGE</button>
+              <button mat-menu-item>TERMS OF SERVICES</button>
+              <button mat-menu-item>COMING SOON</button>
+            </mat-menu>
+          </li>
+          <li><a routerLink="['contact']">CONTACT</a></li>
+
+          <li class="cart"><a href="_" target="_blank"><i class="fa fa-shopping-cart"></i></a></li>
+          
+          <li class="search"><a><i class="fa fa-search"></i></a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </mat-toolbar>
+</header>

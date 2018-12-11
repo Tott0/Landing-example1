@@ -1,0 +1,244 @@
+@import '~@angular/material/theming';
+@mixin landing-component-theme($theme) {
+  $primary: map-get($map: $theme, $key: primary);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $foreground-text: mat-color($foreground, text);
+  $foreground-sec-text: mat-color($foreground, secondary-text);
+  .landing-wrapper {
+    .info-section {
+      .section-content {
+        color: white;
+      }
+    }
+    .img-shadow-effect,
+    .shadow-overlay {
+      background: transparentize($color: #000000, $amount: 0.45);
+    }
+    .carousel-section {
+      .carousel-content {
+        .content-title {
+          color: $foreground-text;
+          span {
+            color: mat-color($primary);
+          }
+        }
+        .content-actions {
+          button {
+            border: solid 1px mat-color($primary);
+          }
+        }
+      }
+    }
+    .features-section {
+      .features.row {
+        background: var(--color-dark);
+        .feature-box {
+          .feature-box-content {
+            color: $foreground-text;
+            p {
+              color: $foreground-sec-text;
+            }
+          }
+        }
+      }
+    }
+    .about-section {
+      p,
+      a {
+        color: $foreground-sec-text;
+      }
+      .about-content {
+        .about {
+          ul.nav {
+            li {
+              &.active {
+                a {
+                  color: mat-color($primary);
+                }
+              }
+              &:not(:last-of-type) {
+                a {
+                  border-right: solid 1px $foreground-sec-text;
+                }
+              }
+              a {
+                &:hover {
+                  background: none;
+                }
+              }
+            }
+          }
+          button.btn-read {
+            color: mat-color($foreground, text) !important;
+          }
+        }
+      }
+    }
+    .traits-section {
+      .row {
+        .block-left {
+          background: var(--color-dark);
+          .trait-title {
+            color: $foreground-text;
+          }
+          p {
+            color: $foreground-sec-text;
+          }
+        }
+        .block-right {
+          position: relative;
+          .button-video {
+            z-index: 999;
+            ;
+            border: 4px solid #fff;
+            border-color: #fff;
+            &:hover {
+              background: #fff;
+              color: none;
+              text-decoration: none;
+            }
+            i {
+              color: mat-color($primary);
+            }
+          }
+        }
+      }
+    }
+    .pricing-section {
+      p,
+      a {
+        color: $foreground-sec-text;
+      }
+      .pricing-switcher {
+        .mat-button-toggle {
+          border: solid 1px var(--color-dark);
+          color: $foreground-text;
+          background: none;
+          &.mat-button-toggle-checked {
+            background: mat-color($primary);
+          }
+        }
+      }
+      .pricing-list {
+        .offer {
+          background: var(--color-dark);
+          color: $foreground-text;
+          button {
+            background: mat-color($primary);
+          }
+        }
+      }
+    }
+  }
+  .calculator-section {
+    p,
+    a {
+      color: $foreground-sec-text;
+    }
+    .calc {
+      background: var(--color-dark);
+    }
+    .calc-row {
+      color: $foreground-text;
+      mat-form-field {
+        .mat-form-field-infix {
+          border: solid 1px lighten(#212121, 10);
+        }
+        .mat-button,
+        .mat-select {
+          background: mat-color($primary);
+          &[disabled] {
+            color: $foreground-text;
+          }
+        }
+        .mat-form-field-underline {
+          display: none;
+        }
+      }
+      .info {
+        color: $foreground-sec-text;
+      }
+    }
+  }
+  .team-section {
+    .member {
+      background: var(--color-dark);
+      h4 {
+        color: $foreground-text;
+      }
+      p {
+        color: $foreground-sec-text;
+      }
+      &:hover {
+        .team-member-caption {
+          background: mat-color($primary);
+        }
+        h4,
+        p {
+          color: $foreground-text;
+        }
+      }
+      .team-member-caption {
+        border-top: solid 3px mat-color($primary);
+      }
+      .list {
+        a {
+          color: $foreground-text;
+          background: rgba(0, 0, 0, .5);
+        }
+      }
+    }
+  }
+  .section-register {
+    button.mat-flat-button,
+    p,
+    h2 {
+      color: $foreground-text;
+    }
+  }
+  section {
+    .title-head,
+    .title-about {
+      color: $foreground-text;
+    }
+    .title-head-subtitle {
+      p {
+        color: $foreground-sec-text;
+        &:before {
+          background: mat-color($primary);
+        }
+        &:after {
+          background: mat-color($primary);
+        }
+      }
+    }
+  }
+  .top-footer {
+    background: var(--color-darkest);
+    color: $foreground-text;
+    h4,
+    h5 {
+      color: mat-color($primary);
+    }
+    a,
+    p,
+    i,
+    span {
+      color: $foreground-sec-text;
+    }
+    .social-footer {
+      a {
+        background: var(--color-dark);
+      }
+    }
+    .payment-logos {
+      hr {
+        background-color: var(--color-dark);
+      }
+      h4 {
+        color: $foreground-sec-text;
+      }
+    }
+  }
+}

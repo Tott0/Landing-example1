@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+@mixin footer-component-theme($theme) {
+  $primary: map-get($map: $theme, $key: primary);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  mat-toolbar.mat-toolbar.copyright {
+    background: var(--color-darkest);
+    border-top: solid 1px mat-color($foreground, divider);
+    li:not(:first-of-type) {
+      border-left: solid 1px mat-color($foreground, text);
+    }
+    a, span {
+      color: mat-color($foreground, secondary-text);
+    }
+  }
+}

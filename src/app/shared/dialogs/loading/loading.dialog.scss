@@ -1,0 +1,17 @@
+
+@import './src/scss/variables.scss';
+.dialog-loading {
+  mat-dialog-container{
+    width: 35vw;
+  }
+  .mat-dialog-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    p{
+      font-size: 1.25rem;
+    }
+  }
+}

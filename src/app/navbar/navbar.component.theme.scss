@@ -1,0 +1,73 @@
+@import '~@angular/material/theming';
+@mixin navbar-component-theme($theme) {
+  $primary: map-get($map: $theme, $key: primary);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  header {
+    .top-toolbar {
+      background: mat-color($background, app-bar);
+      background: mat-color(mat-palette($mat-grey), 900);
+      a.logo {
+        color: mat-color($foreground, text);
+      }
+      a:not(.logo) {
+        color: mat-color($foreground, text);
+        &:hover {
+          &:not(.highlight) {
+            border-bottom: none;
+            color: mat-color($primary, 500);
+            transition: color 0.1s ease-in;
+          }
+        }
+      }
+      .trends {
+        li {
+          .value {
+          }
+          .subtitle {
+            color: mat-color($foreground, secondary-text);
+          }
+        }
+        .highlight{
+          color: mat-color($primary);
+          .trend-indicator{
+            &.up{
+              color: var(--color-success);
+            }
+            &.down{
+              color: var(--color-danger);
+            }
+          }
+        }
+      }
+      .auth-actions{
+        .btn-login{
+          border: solid 1px mat-color($primary);
+        }
+        .btn-signup{
+          color: mat-color($foreground, text);
+        }
+      }
+    }
+    .fixed-toolbar {
+      background: var(--color-darkest);
+      .row{
+        nav{
+          li.active{
+            a{
+              color: mat-color($primary);
+            }
+          }
+          a{
+            color: mat-color($foreground, text);
+            &:hover{
+              background: none;
+              color: mat-color($primary);
+              transition: color ease-in 100ms;
+            }
+          }
+        }
+      }
+    }
+  }
+}

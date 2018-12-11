@@ -1,0 +1,111 @@
+@import './src/scss/variables.scss';
+::ng-deep {
+  .mat-menu-content button {
+    font-size: 0.75em;
+    .button-text {
+      margin-left: 0.5em;
+    }
+  }
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  min-height: var(--header-height);
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+
+  mat-toolbar.top-toolbar {
+    @include for-tablet-landscape-up {
+      height: var(--top-header-height);
+    }
+    .logo {
+      display: flex;
+      font-size: 2em;
+      &:hover {
+        cursor: pointer;
+      }
+      img {
+        margin-right: 1em;
+        height: 90px;
+      }
+    }
+    nav,
+    ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      font-size: 1em;
+      li {
+        list-style: none;
+        margin: 0 0.5em;
+        padding: 0.25em;
+        position: relative;
+      }
+    }
+    .trends{
+      font-size: 0.75em;
+      li{
+        display: flex;
+        flex-direction: column;
+        span{
+          line-height: 150%;
+        }
+        .value{
+          font-weight: 800;
+        }
+        .subtitle{
+          font-size: 0.9em;
+        }
+      }
+    }
+    .auth-actions{
+      button{
+        border-radius: 0;
+      }
+      .btn-login{
+        padding: 0.5em 1.25em;
+      }
+      .btn-signup{
+        padding: 0.5em 2em;
+      }
+    }
+    a,
+    .title,
+    .menu-toggle {
+      text-decoration: none;
+    }
+    .menu-auth {
+      padding: 0;
+      font-size: 1em;
+      img {
+        height: 2em;
+        width: 2em;
+      }
+      .button-text {
+        font-size: 1em;
+        margin: 0 0.25em;
+      }
+    }
+  }
+  mat-toolbar.fixed-toolbar {
+    @include for-tablet-landscape-up {
+      height: var(--fixed-header-height);
+    }
+    .row{
+      width: 100%;
+      justify-content: center;
+      nav{
+        a{
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

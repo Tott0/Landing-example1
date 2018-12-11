@@ -1,0 +1,20 @@
+@import '~@angular/material/theming';
+@mixin global-theme($theme) {
+  $primary: map-get($map: $theme, $key: primary);
+  .img-shadow-effect, .shadow-overlay{
+    background: transparentize($color: #000000, $amount: 0.75);
+  }
+
+  .bg-title-card{
+    mat-card-header {
+      background: mat-color($primary, darker);
+    }
+  }
+
+  body{
+    background-color: var(--color-darkest);
+  }
+  .highlight.primary{
+    color: mat-color($primary) !important;
+  }
+}

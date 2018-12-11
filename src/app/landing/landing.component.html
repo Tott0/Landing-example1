@@ -1,0 +1,425 @@
+<div class="component-wrapper landing-wrapper">
+
+
+
+  <section class="carousel-section">
+    <div class="shadow-overlay"></div>
+    <div class="carousel">
+      <ng-container *ngFor="let car of carouselItems">
+
+        <div class="carousel-item" *ngIf="car.id === carouselItems[carouselIndex].id">
+          <div class="bg" [style.background-image]="'url('+car.img+')'"></div>
+          <div class="carousel-content">
+            <div class="content-title" [innerHtml]="car.text"></div>
+            <div class="content-actions" *ngIf="car.button">
+              <button mat-stroked-button color="primary" routerLink="['prices']">{{ car.button }}</button>
+            </div>
+
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="container">
+      <div class="row features">
+        <div class="feature-box">
+          <span class="feature-icon">
+            <img id="download-bitcoin" src="assets/images/download-bitcoin.png" alt="download bitcoin">
+          </span>
+          <div class="feature-box-content">
+            <h3>Download Bitcoin Wallet</h3>
+            <p>Get it on PC or Mobile to create, <br> send and receive bitcoins.</p>
+          </div>
+        </div>
+
+        <div class="feature-box two">
+          <span class="feature-icon">
+            <img id="add-bitcoins" src="assets/images/add-bitcoins.png" alt="add bitcoins">
+          </span>
+          <div class="feature-box-content">
+            <h3>Add coins to your Wallet</h3>
+            <p>Add bitcoins you’ve created or <br> exchanged via credit card.</p>
+          </div>
+        </div>
+
+        <div class="feature-box three">
+          <span class="feature-icon">
+            <img id="buy-sell-bitcoins" src="assets/images/buy-sell-bitcoins.png" alt="buy and sell bitcoins">
+          </span>
+          <div class="feature-box-content">
+            <h3>Buy/Sell with Wallet</h3>
+            <p>Enter receiver's address, specify <br> the amount and send.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="container">
+
+      <div class="text-center">
+        <h2 class="title-head">About <span class="highlight primary">Us</span></h2>
+        <div class="title-head-subtitle">
+          <p>A COMMERCIAL WEBSITE THAT LISTS WALLETS, EXCHANGES AND OTHER BITCOIN RELATED INFO</p>
+        </div>
+      </div>
+
+      <div class="row about-content">
+        <div class="img">
+          <img id="about-us" class="img-responsive img-about-us" src="/assets/images/about-us.png" alt="about us">
+        </div>
+
+        <div class="about">
+          <h3 class="title-about">WE ARE BAYYA</h3>
+          <p class="about-text">A place for everyone who wants to simply buy and sell Bitcoins. Deposit funds using
+            your Visa/MasterCard or bank transfer. Instant buy/sell of Bitcoins at fair price is guaranteed. Nothing
+            extra. Join over 700,000 users from all over the world satisfied with our services.</p>
+          <ul class="nav">
+            <li [ngClass]="{'active': selectedAboutTab === 0}"><a (click)="selectAboutTab(0)">OUR MISSION</a></li>
+            <li [ngClass]="{'active': selectedAboutTab === 1}"><a (click)="selectAboutTab(1)">OUR ADVANTAGES</a></li>
+            <li [ngClass]="{'active': selectedAboutTab === 2}"><a (click)="selectAboutTab(2)">OUR GUARANTEES</a></li>
+          </ul>
+          <div class="content">
+            <div [@fadeInOut]="'in'" *ngIf="selectedAboutTab === 0">
+              <p>Bitcoin is based on a protocol known as the blockchain, which allows to create, transfer and verify
+                ultra-secure financial data without interference of third parties.</p>
+            </div>
+            <div [@fadeInOut]="'in'" *ngIf="selectedAboutTab === 1">
+              <p>Our mission as an official partner of Bitcoin Foundation is to help you enter and better understand
+                the world of #1 cryptocurrency and avoid any issues you may encounter.</p>
+            </div>
+            <div [@fadeInOut]="'in'" *ngIf="selectedAboutTab === 2">
+              <p>We are here because we are passionate about open, transparent markets and aim to be a major driving
+                force in widespread adoption, we are the first and the best in cryptocurrency. </p>
+            </div>
+          </div>
+          <button mat-flat-button color="primary" routerLink="['about-us']" class="btn-read">READ MORE</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="traits-section">
+    <div class="row">
+      <!-- Features Starts -->
+      <div class="block-left">
+
+        <div class="trait text-center">
+          <span class="feature-icon">
+            <img id="strong-security" src="/assets/images/strong-security.png" alt="strong security">
+          </span>
+          <h3 class="trait-title">STRONG SECURITY</h3>
+          <p>Protection against DDoS attacks, <br>full data encryption</p>
+        </div>
+
+        <div class="trait text-center">
+          <span class="feature-icon">
+            <img id="world-coverage" src="/assets/images/world-coverage.png" alt="world coverage">
+          </span>
+          <h3 class="trait-title">WORLD COVERAGE</h3>
+          <p>Providing services in 99% countries<br> around all the globe</p>
+        </div>
+
+        <div class="trait text-center">
+          <span class="feature-icon">
+            <img id="payment-options" src="/assets/images/payment-options.png" alt="payment options">
+          </span>
+          <h3 class="trait-title">PAYMENT OPTIONS</h3>
+          <p>Popular methods: Visa, MasterCard, <br>bank transfer, cryptocurrency</p>
+        </div>
+
+        <div class="trait text-center">
+          <span class="feature-icon">
+            <img id="mobile-app" src="/assets/images/mobile-app.png" alt="mobile app">
+          </span>
+          <h3 class="trait-title">MOBILE APP</h3>
+          <p>Trading via our Mobile App, Available<br> in Play Store &amp; App Store</p>
+        </div>
+
+        <div class="trait text-center">
+          <span class="feature-icon">
+            <img id="cost-efficiency" src="/assets/images/cost-efficiency.png" alt="cost efficiency">
+          </span>
+          <h3 class="trait-title">COST EFFICIENCY</h3>
+          <p>Reasonable trading fees for takers<br> and all market makers</p>
+        </div>
+
+        <div class="trait text-center">
+          <span class="feature-icon">
+            <img id="high-liquidity" src="assets/images/high-liquidity.png" alt="high liquidity">
+          </span>
+          <h3 class="trait-title">HIGH LIQUIDITY</h3>
+          <p>Fast access to high liquidity orderbook<br> for top currency pairs</p>
+        </div>
+
+      </div>
+
+      <div class="block-right">
+        <div class="shadow-overlay"></div>
+        <a class="button-video mfp-youtube" target="_blank" href="https://www.youtube.com/watch?v=0gv7OC9L2s8">
+          <i class="fas fa-play"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-section">
+    <div class="container">
+
+      <div class="col text-center">
+        <h2 class="title-head">AFFORDABLE <span class="highlight primary">PACKAGES</span></h2>
+        <div class="title-head-subtitle">
+          <p>PURCHASE BITCOIN USING A CREDIT CARD OR WITH YOUR LINKED BANK ACCOUNT</p>
+        </div>
+      </div>
+
+      <div class="col">
+
+        <div class="pricing-switcher">
+          <mat-button-toggle-group [(ngModel)]="isBuying" (change)="togglePricingList()">
+            <mat-button-toggle [value]="0" selected>BUY</mat-button-toggle>
+            <mat-button-toggle [value]="1">SELL</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+
+        <div class="pricing-list">
+          <!-- <article class="offer" *ngFor="let off of visibleOffers" [@flipFrontBack]="priceOfferFlipState">
+              <h2>GET {{ off.value }} {{ off.currency }}</h2>
+              <span>FOR </span>
+              <span class="price">
+                {{ off.symbol }} {{ off.price }}
+              </span>
+              <button mat-flat-button class="btn-order">{{isBuying === 0 ? 'ORDER NOW' : 'SELL NOW'}}</button>
+          </article> -->
+
+          <article class="offer" [@flipFrontBack]="priceOfferFlipState" [ngClass]="{'flipped': !isBuying}">
+            <h2>GET {{ visibleOffers[0].value }} {{ visibleOffers[0].currency }}</h2>
+            <span>FOR </span>
+            <span class="price">
+              {{ visibleOffers[0].symbol }} {{ visibleOffers[0].price }}
+            </span>
+            <button mat-flat-button class="btn-order">{{isBuying === 0 ? 'ORDER NOW' : 'SELL NOW'}}</button>
+          </article>
+          <article class="offer" [@flipFrontBack]="priceOfferFlipState" (@flipFrontBack.done)="priceOfferFlipState = 'front'">
+            <h2>GET {{ visibleOffers[0].value }} {{ visibleOffers[0].currency }}</h2>
+            <span>FOR </span>
+            <span class="price">
+              {{ visibleOffers[0].symbol }} {{ visibleOffers[0].price }}
+            </span>
+            <button mat-flat-button class="btn-order">{{isBuying === 0 ? 'ORDER NOW' : 'SELL NOW'}}</button>
+          </article>
+          <article class="offer" [@flipFrontBack]="priceOfferFlipState">
+            <h2>GET {{ visibleOffers[0].value }} {{ visibleOffers[0].currency }}</h2>
+            <span>FOR </span>
+            <span class="price">
+              {{ visibleOffers[0].symbol }} {{ visibleOffers[0].price }}
+            </span>
+            <button mat-flat-button class="btn-order">{{isBuying === 0 ? 'ORDER NOW' : 'SELL NOW'}}</button>
+          </article>
+          <article class="offer" [@flipFrontBack]="priceOfferFlipState">
+            <h2>GET {{ visibleOffers[0].value }} {{ visibleOffers[0].currency }}</h2>
+            <span>FOR </span>
+            <span class="price">
+              {{ visibleOffers[0].symbol }} {{ visibleOffers[0].price }}
+            </span>
+            <button mat-flat-button class="btn-order">{{isBuying === 0 ? 'ORDER NOW' : 'SELL NOW'}}</button>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="calculator-section">
+    <div class="calc container">
+
+      <div class="col title-col text-center">
+        <h2 class="title-head text-center"><span class="highlight primary">BITCOIN</span> CALCULATOR</h2>
+        <div class="title-head-subtitle">
+          <p>FIND OUT THE CURRENT BITCOIN VALUE WITH OUR EASY-TO-USE CONVERTER</p>
+        </div>
+      </div>
+
+
+      <div class="row calc-row">
+        <mat-form-field class="baseInput">
+          <input matInput type="text" [(ngModel)]="btcValue" (change)="onBtcChanged()">
+
+          <button mat-button matSuffix class="btn-curr" disabled>₿</button>
+        </mat-form-field>
+
+        <span class="eql"> &#61;</span>
+
+        <mat-form-field class="targetInput">
+          <input matInput type="text" [ngModel]="currValue" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="mat-select-form">
+          <mat-select [(value)]="selectedCurrencyIndex" (change)="onCurrencyChange(currs[i])">
+            <mat-option *ngFor="let curr of currs; let i = index;" [value]="i">
+              {{curr.code}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <p class="info"><i>* Data updated every 15 minutes</i></p>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="container">
+
+      <div class="col title-col text-center">
+        <h2 class="title-head">OUR <span class="highlight primary">EXPERTS</span></h2>
+        <div class="title-head-subtitle">
+          <p> A TALENTED TEAM OF CRYPTOCURRENCY EXPERTS BASED IN LONDON</p>
+        </div>
+      </div>
+
+      <div class="team-members">
+
+        <div class="member" *ngFor="let mem of teamMembers">
+          <img [src]="mem.img" class="img-responsive" alt="team member">
+
+          <div class="team-member-caption social-icons">
+            <h4>{{ mem.name }}</h4>
+            <p>{{ mem.role }}</p>
+            <ul class="list list-inline social">
+              <li>
+                <a><i class="fab fa-facebook-f"></i></a>
+              </li>
+              <li>
+                <a><i class="fab fa-twitter"></i></a>
+              </li>
+              <li>
+                <a><i class="fab fa-google-plus"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-register">
+    <div class="call-action-all-overlay">
+      <div class="container">
+
+        <div class="action-text">
+          <h2>GET STARTED TODAY WITH BITCOIN</h2>
+          <p class="lead">Open account for free and start trading Bitcoins!</p>
+        </div>
+
+        <button mat-flat-button color="primary" routerLink="['/signup']">REGISTER NOW</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="top-footer">
+    <div class="container">
+      <div class="footer-content">
+
+        <article class="our-company">
+
+          <h4>OUR COMPANY</h4>
+
+          <nav class="menu">
+            <ul>
+              <li><a routerLink="['']">HOME</a></li>
+              <li><a routerLink="['/about']">ABOUT</a></li>
+              <li><a routerLink="['/services']">SERVICES</a></li>
+              <li><a routerLink="['/pricing']">PRICING</a></li>
+              <li><a routerLink="['/blog']">BLOG</a></li>
+              <li><a routerLink="['/contact']">CONTACT</a></li>
+            </ul>
+          </nav>
+
+        </article>
+
+        <article class="help">
+
+          <h4>HELP &amp; SUPPORT</h4>
+
+          <nav class="menu">
+            <ul>
+              <li><a routerLink="['/faq'">FAQ</a></li>
+              <li><a routerLink="['/terms-of-services'">TERMS OF SERVICES</a></li>
+              <li><a routerLink="['/404'">404</a></li>
+              <li><a routerLink="['/register'">REGISTER</a></li>
+              <li><a routerLink="['/login'">LOGIN</a></li>
+              <li><a routerLink="['/coming-soon'">COMING SOON</a></li>
+            </ul>
+          </nav>
+
+        </article>
+
+        <article class="contact-info">
+
+          <h4>CONTACT US </h4>
+
+
+          <span>CONTACT@WEBSITE.COM</span>
+
+          <span>00216 21 184 010</span>
+
+          <span>LONDON, ENGLAND</span>
+
+          <span>MON-SAT 08AM ⇾ 05PM</span>
+
+          <ul class="row social-footer">
+            <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fab fa-google-plus"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+          </ul>
+
+        </article>
+
+        <article class="market">
+
+          <div>
+            <h5>$198.76B</h5>
+            <span>MARKET CAP</span>
+          </div>
+          <div>
+            <h5>243K</h5>
+            <span>DAILY TRANSACTIONS</span>
+          </div>
+          <div>
+            <h5>369K</h5>
+            <span>ACTIVE ACCOUNTS</span>
+          </div>
+          <div>
+            <h5>127</h5>
+            <span>SUPPORTED COUNTRIES</span>
+          </div>
+
+        </article>
+
+        <article class="payment-logos">
+
+          <hr>
+
+          <h4 class="payment-title">SUPPORTED PAYMENT METHODS</h4>
+
+          <div class="row">
+            <img src="assets/images/american-express.png" alt="american-express">
+            <img src="assets/images/mastercard.png" alt="mastercard">
+            <img src="assets/images/visa.png" alt="visa">
+            <img src="assets/images/paypal.png" alt="paypal">
+            <img class="last" src="assets/images/maestro.png" alt="maestro">
+          </div>
+
+        </article>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
