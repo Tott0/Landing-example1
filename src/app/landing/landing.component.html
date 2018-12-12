@@ -6,12 +6,13 @@
     <!-- <div class="shadow-overlay"></div> -->
     <div class="carousel">
       <div class="carousel-inner">
-        
+
         <ng-container *ngFor="let car of carouselItems">
-          <div class="carousel-item" [ngClass]="{'active': car.id === carouselItems[carouselIndex].id}" [@slideLeftRight]="car.animState" [style.background-image]="'url('+car.img+')'">
+          <div class="carousel-item" [ngClass]="{'active': car.id === carouselItems[carouselIndex].id}"
+            [@slideLeftRight]="car.animState" [style.background-image]="'url('+car.img+')'">
             <div class="carousel-content">
               <div class="container">
-              
+
                 <div class="content-title" [innerHtml]="car.text"></div>
                 <div class="content-actions" *ngIf="car.button">
                   <button mat-stroked-button color="primary" routerLink="['prices']">{{ car.button }}</button>
@@ -207,38 +208,82 @@
               <button mat-flat-button class="btn-order">{{isBuying === 0 ? 'ORDER NOW' : 'SELL NOW'}}</button>
           </article> -->
 
-          <article class="offer" [@flipFrontBack]="priceOfferFlipState" [ngClass]="{'flipped': !isBuying}">
-            <h2>GET {{ visibleOffers[0].value }} {{ visibleOffers[0].currency }}</h2>
-            <span>FOR </span>
-            <span class="price">
-              {{ visibleOffers[0].symbol }} {{ visibleOffers[0].price }}
-            </span>
-            <button mat-flat-button class="btn-order">{{isBuying === 0 ? 'ORDER NOW' : 'SELL NOW'}}</button>
+          <article class="offer">
+            <div class="front" [ngClass]="{'is-hidden': priceOfferFlipState}" [@flipFrontBack]="priceOfferFlipState" >
+              <h2>GET {{ buyingOffers[0].value }} {{ buyingOffers[0].currency }}</h2>
+              <span>FOR </span>
+              <span class="price">
+                {{ buyingOffers[0].symbol }} {{ buyingOffers[0].price }}
+              </span>
+              <button mat-flat-button class="btn-order">{{'ORDER NOW'}}</button>
+            </div>
+            <div class="back" [ngClass]="{'is-hidden': !priceOfferFlipState}" [@flipFrontBack]="priceOfferFlipState" >
+              <h2>GET {{ sellingOffers[0].value }} {{ sellingOffers[0].currency }}</h2>
+              <span>FOR </span>
+              <span class="price">
+                {{ sellingOffers[0].symbol }} {{ sellingOffers[0].price }}
+              </span>
+              <button mat-flat-button class="btn-order">{{'SELL NOW'}}</button>
+            </div>
           </article>
-          <article class="offer" [@flipFrontBack]="priceOfferFlipState" (@flipFrontBack.done)="priceOfferFlipState = 'front'">
-            <h2>GET {{ visibleOffers[0].value }} {{ visibleOffers[0].currency }}</h2>
-            <span>FOR </span>
-            <span class="price">
-              {{ visibleOffers[0].symbol }} {{ visibleOffers[0].price }}
-            </span>
-            <button mat-flat-button class="btn-order">{{isBuying === 0 ? 'ORDER NOW' : 'SELL NOW'}}</button>
+
+          <article class="offer" [@flipFrontBack]="priceOfferFlipState" [ngClass]="{'flipped': priceOfferFlipState}">
+            <div class="front" [ngClass]="{'is-hidden': priceOfferFlipState}">
+              <h2>GET {{ buyingOffers[1].value }} {{ buyingOffers[1].currency }}</h2>
+              <span>FOR </span>
+              <span class="price">
+                {{ buyingOffers[1].symbol }} {{ buyingOffers[1].price }}
+              </span>
+              <button mat-flat-button class="btn-order">{{'ORDER NOW'}}</button>
+            </div>
+            <div class="back" [ngClass]="{'is-hidden': !priceOfferFlipState}">
+              <h2>GET {{ sellingOffers[1].value }} {{ sellingOffers[1].currency }}</h2>
+              <span>FOR </span>
+              <span class="price">
+                {{ sellingOffers[1].symbol }} {{ sellingOffers[1].price }}
+              </span>
+              <button mat-flat-button class="btn-order">{{'SELL NOW'}}</button>
+            </div>
           </article>
-          <article class="offer" [@flipFrontBack]="priceOfferFlipState">
-            <h2>GET {{ visibleOffers[0].value }} {{ visibleOffers[0].currency }}</h2>
-            <span>FOR </span>
-            <span class="price">
-              {{ visibleOffers[0].symbol }} {{ visibleOffers[0].price }}
-            </span>
-            <button mat-flat-button class="btn-order">{{isBuying === 0 ? 'ORDER NOW' : 'SELL NOW'}}</button>
+
+          <article class="offer" [@flipFrontBack]="priceOfferFlipState" [ngClass]="{'flipped': priceOfferFlipState}">
+            <div class="front" [ngClass]="{'is-hidden': priceOfferFlipState}">
+              <h2>GET {{ buyingOffers[2].value }} {{ buyingOffers[2].currency }}</h2>
+              <span>FOR </span>
+              <span class="price">
+                {{ buyingOffers[2].symbol }} {{ buyingOffers[2].price }}
+              </span>
+              <button mat-flat-button class="btn-order">{{'ORDER NOW'}}</button>
+            </div>
+            <div class="back" [ngClass]="{'is-hidden': !priceOfferFlipState}">
+              <h2>GET {{ sellingOffers[2].value }} {{ sellingOffers[2].currency }}</h2>
+              <span>FOR </span>
+              <span class="price">
+                {{ sellingOffers[2].symbol }} {{ sellingOffers[2].price }}
+              </span>
+              <button mat-flat-button class="btn-order">{{'SELL NOW'}}</button>
+            </div>
           </article>
-          <article class="offer" [@flipFrontBack]="priceOfferFlipState">
-            <h2>GET {{ visibleOffers[0].value }} {{ visibleOffers[0].currency }}</h2>
-            <span>FOR </span>
-            <span class="price">
-              {{ visibleOffers[0].symbol }} {{ visibleOffers[0].price }}
-            </span>
-            <button mat-flat-button class="btn-order">{{isBuying === 0 ? 'ORDER NOW' : 'SELL NOW'}}</button>
+
+          <article class="offer" [@flipFrontBack]="priceOfferFlipState" [ngClass]="{'flipped': priceOfferFlipState}">
+            <div class="front" [ngClass]="{'is-hidden': priceOfferFlipState}">
+              <h2>GET {{ buyingOffers[3].value }} {{ buyingOffers[3].currency }}</h2>
+              <span>FOR </span>
+              <span class="price">
+                {{ buyingOffers[3].symbol }} {{ buyingOffers[3].price }}
+              </span>
+              <button mat-flat-button class="btn-order">{{'ORDER NOW'}}</button>
+            </div>
+            <div class="back" [ngClass]="{'is-hidden': !priceOfferFlipState}">
+              <h2>GET {{ sellingOffers[3].value }} {{ sellingOffers[3].currency }}</h2>
+              <span>FOR </span>
+              <span class="price">
+                {{ sellingOffers[3].symbol }} {{ sellingOffers[3].price }}
+              </span>
+              <button mat-flat-button class="btn-order">{{'SELL NOW'}}</button>
+            </div>
           </article>
+
         </div>
       </div>
     </div>

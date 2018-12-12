@@ -22,7 +22,7 @@
     .carousel {
       display: block;
       position: relative;
-      .carousel-inner{
+      .carousel-inner {
         position: relative;
         display: block;
         overflow: hidden;
@@ -94,7 +94,7 @@
             left: 0;
           }
         }
-        &.ng-animating{
+        &.ng-animating {
           position: absolute;
           top: 0;
           width: 100%;
@@ -327,16 +327,33 @@
       min-height: 370px;
       align-items: flex-start;
       .offer {
-        display: flex;
-        flex-direction: column;
-        padding: 1.75em;
-        text-align: center;
-        .isFlipped {
+        &>div{
+          display: flex;
+          flex-direction: column;
+          padding: 1.75em;
+          text-align: center;
+          position: relative;
+        }
+        .flipped {
           transform: rotateY(-180deg);
         }
+        .is-hidden {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          z-index: 1;
+          transform: rotateY(180deg);
+        }
+        div:not(.is-hidden){
+          position: relative;
+          z-index: 5;
+        }
         &.ng-animating {
+          // transform: rotateY(-180deg);
           * {
-            visibility: hidden;
+            // visibility: hidden;
           }
         }
         h2 {

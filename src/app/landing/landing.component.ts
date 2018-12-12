@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { AppConstants } from '@app/app-constants';
 import { getErrorMessage } from '@core/static-methods';
@@ -20,14 +20,21 @@ import { getErrorMessage } from '@core/static-methods';
       ])
     ]),
     trigger('flipFrontBack', [
-      state('front', style({
+      state('true', style({
         transform: 'rotateY(0)'
       })),
-      state('back', style({
-        transform: 'rotateY(180deg)'
+      state('false', style({
+        transform: 'rotateY(0)'
       })),
-      transition('front => back', [
-        animate('200ms ease')
+      transition('false <=> true', [
+        style({
+          transform: 'rotateY(180deg)'
+        }),
+        animate('350ms ease-out', keyframes([
+          style({ transform: 'rotateY(180deg)', offset: 0 }),
+          style({ transform: 'rotateY(90deg)', offset: 0.3 }),
+          style({ transform: 'rotateY(0)', offset: 1 })
+        ]))
       ]),
       transition('back => front', [
         animate('0ms')
@@ -78,7 +85,7 @@ import { getErrorMessage } from '@core/static-methods';
           transform: 'translateX(0)'
         }))
       ]),
-      transition('* => *', [ animate('600ms ease-in-out') ]),
+      transition('* => *', [animate('600ms ease-in-out')]),
     ])
   ]
 })
@@ -143,7 +150,7 @@ export class LandingComponent implements OnInit, OnDestroy {
   ];
   visibleOffers = this.buyingOffers;
   isBuying = 0;
-  priceOfferFlipState: 'front' | 'back' = 'front';
+  priceOfferFlipState = false;
 
   currs = [
     {
@@ -241,69 +248,16 @@ export class LandingComponent implements OnInit, OnDestroy {
   hideRevRight = false;
   hideRevLeft = false;
 
-  errors: any = {};
-  warehouseForm: FormGroup;
-  get city() { return this.warehouseForm.get('city'); }
-  get pallets() { return this.warehouseForm.get('pallets'); }
-  getErrorMessage = getErrorMessage;
-
-  iLat = 10.9838119;
-  iLng = -74.8180175;
-  zoom = 13;
-
   constructor(
     private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit() {
     AppConstants.isAtLanding = true;
-
-    this.warehouseForm = this.formBuilder.group({
-      city: ['', [Validators.required]],
-      pallets: ['', [Validators.required, Validators.min(0)]],
-    });
   }
 
   ngOnDestroy() {
     AppConstants.isAtLanding = false;
-  }
-
-  nextReviews() {
-    this.hideRevLeft = false;
-
-    this.reviewIndex++;
-    const t = this.reviewIndex * 3;
-    if (t >= this.reviews.length) {
-      this.hideRevRight = true;
-    }
-
-    this.shownReviews = [];
-    setTimeout(() => {
-      this.shownReviews = this.reviews.slice(t, t + 3);
-    }, 100);
-
-    if ((this.reviewIndex + 1) * 3 >= this.reviews.length) {
-      this.hideRevRight = true;
-    }
-  }
-  prevReviews() {
-    this.hideRevRight = false;
-
-    this.reviewIndex--;
-    const t = this.reviewIndex * 3;
-    if (t < 0) {
-      this.hideRevLeft = true;
-      return;
-    }
-
-    this.shownReviews = [];
-    setTimeout(() => {
-      this.shownReviews = this.reviews.slice(t, t + 3);
-    }, 100);
-
-    if ((this.reviewIndex - 1) * 3 < 0) {
-      this.hideRevLeft = true;
-    }
   }
 
   selectAboutTab(tab) {
@@ -318,11 +272,8 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   togglePricingList() {
-    this.priceOfferFlipState = 'back';
-    this.visibleOffers = this.isBuying === 0 ? this.buyingOffers : this.sellingOffers;
-    setTimeout(() => {
-      // this.priceOfferFlipState = 'front';
-    }, 201);
+    this.priceOfferFlipState = !this.priceOfferFlipState;
+    this.visibleOffers = this.priceOfferFlipState ? this.sellingOffers : this.buyingOffers;
   }
 
   triggerCarouselLeft() {
@@ -347,7 +298,7 @@ export class LandingComponent implements OnInit, OnDestroy {
 
     this.carouselItems[prevIndex].animState = 'left';
     this.carouselItems[this.carouselIndex].animState = 'normalFromRight';
-    
+
     console.log('prev ' + prevIndex, this.carouselItems[prevIndex].animState);
     console.log('sel ' + this.carouselIndex, this.carouselItems[this.carouselIndex].animState);
     console.groupEnd();
