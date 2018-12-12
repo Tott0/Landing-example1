@@ -29,8 +29,10 @@
           }
         }
       }
-      .carousel-control{
-        a, span, i {
+      .carousel-control {
+        a,
+        span,
+        i {
           color: mat-color($primary);
         }
       }
@@ -127,7 +129,7 @@
       }
       .pricing-list {
         .offer {
-          &>div{
+          &>div {
             background: var(--color-dark);
             color: $foreground-text;
           }
@@ -193,6 +195,72 @@
         a {
           color: $foreground-text;
           background: rgba(0, 0, 0, .5);
+        }
+      }
+    }
+  }
+  .section-chart {
+    &>.row{
+      background: rgb(29,29,29);
+    }
+    .quote {
+      color: var(--color-light);
+      p:before,
+      p:after {
+        color: mat-color($primary);
+      }
+      footer {
+        img {
+          border: 3px solid $foreground-sec-text;
+          background: $foreground-sec-text;
+        }
+      }
+    }
+    .chart {
+      .graph-header{
+        background: mat-color($primary);
+        span{
+          color: $foreground-text;
+        }
+      }
+      .graph-sub-header{
+        background: rgb(34, 34, 34);
+        span{
+          color: $foreground-sec-text;
+        }
+        border-left: solid 1px rgba(255, 255, 255, 0.1);
+        border-right: solid 1px rgba(255, 255, 255, 0.1);
+      }
+      .graph {
+        border: solid 1px rgba(255, 255, 255, 0.1);
+        border-top: solid 1px mat-color($primary);
+        background: rgb(34, 34, 34);
+      }
+    }
+  }
+  .section-blog{
+    .post{
+      // background: var(--color-dark);
+      .post-title{
+        a{
+          color: $foreground-text;
+          &:hover{
+            color: mat-color($primary);
+          }
+        }
+      }
+      .post-text{
+        p{
+          color: $foreground-sec-text;
+        }
+      }
+      .mat-flat-button{
+        color: $foreground-text;
+      }
+      .post-date{
+        background: var(--color-dark);
+        span{
+          color: $foreground-text;
         }
       }
     }

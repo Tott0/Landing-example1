@@ -26,6 +26,8 @@ import { UsedMaterialComponentsModule } from '@shared/modules/used-material-comp
 import { UICarouselModule } from '@shared/components/UiCarousel/ui-carousel.module';
 
 /*Libraries */
+import { ChartsModule } from 'ng2-charts';
+
 
 
 @NgModule({
@@ -76,6 +78,7 @@ import { UICarouselModule } from '@shared/components/UiCarousel/ui-carousel.modu
     EnumPositionTypePipe,
     //
     UICarouselModule,
+    ChartsModule
   ],
   entryComponents: [
     LoadingDialog,

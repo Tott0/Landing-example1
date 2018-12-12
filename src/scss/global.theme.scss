@@ -17,4 +17,10 @@
   .highlight.primary{
     color: mat-color($primary) !important;
   }
+
+  .bg-image-shadow{
+    &:after{
+      background: var(--color-shadow-t);
+    }
+  }
 }

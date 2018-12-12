@@ -209,7 +209,7 @@
           </article> -->
 
           <article class="offer">
-            <div class="front" [ngClass]="{'is-hidden': priceOfferFlipState}" [@flipFrontBack]="priceOfferFlipState" >
+            <div class="front" [ngClass]="{'is-hidden': priceOfferFlipState}" [@flipFrontBack]="priceOfferFlipState">
               <h2>GET {{ buyingOffers[0].value }} {{ buyingOffers[0].currency }}</h2>
               <span>FOR </span>
               <span class="price">
@@ -217,7 +217,7 @@
               </span>
               <button mat-flat-button class="btn-order">{{'ORDER NOW'}}</button>
             </div>
-            <div class="back" [ngClass]="{'is-hidden': !priceOfferFlipState}" [@flipFrontBack]="priceOfferFlipState" >
+            <div class="back" [ngClass]="{'is-hidden': !priceOfferFlipState}" [@flipFrontBack]="priceOfferFlipState">
               <h2>GET {{ sellingOffers[0].value }} {{ sellingOffers[0].currency }}</h2>
               <span>FOR </span>
               <span class="price">
@@ -357,6 +357,97 @@
             </ul>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-chart">
+    <div class="row">
+
+      <div class="col quote bg-image-shadow">
+        <blockquote>
+          <p>Bitcoin is one of the most important inventions in all of human history. For the first time ever, anyone
+            can send or receive any amount of money with anyone else, anywhere on the planet, conveniently and without
+            restriction. It’s the dawn of a better, more free world.</p>
+          <footer class="row"><img src="/assets/images/ceo.jpg" alt="ceo"> <span class="highlight primary">Marc Smith</span>
+            - CEO</footer>
+        </blockquote>
+      </div>
+
+      <div class="col chart">
+
+        <div class="graph-wrapper col">
+          <div class="graph-header">
+            <span class="price">
+              <h2>$3361.62</h2>
+              <h4 class="transparent">BTC/USD</h4>
+            </span>
+            <span class="mkt-cap">
+              <span class="transparent">MktCap</span>
+              <span>$58.6B</span>
+            </span>
+            <span class="high">
+              <span class="transparent">High</span>
+              <span>$8351.23</span>
+            </span>
+            <span class="low">
+              <span class="transparent">Low</span>
+              <span>$3361.62</span>
+            </span>
+            <span class="supply">
+              <span class="transparent">Supply</span>
+              <span>17.4M</span>
+            </span>
+            <span class="blocks">
+              <span class="transparent">Blocks</span>
+              <span>553465</span>
+            </span>
+          </div>
+
+          <div class="graph-sub-header">
+            <span class="date">Dec 11, 2018 7:00 PM</span>
+          </div>
+
+          <div class="graph">
+            <canvas baseChart width="620px" height="350px" [datasets]="lineChartData" [options]="lineChartOptions"
+              [colors]="lineChartColors" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-blog">
+    <div class="container">
+
+      <div class="col text-center">
+        <h2 class="title-head">BITCOIN <span class="highlight primary">NEWS</span></h2>
+        <div class="title-head-subtitle">
+          <p>DISCOVER LATEST NEWS ABOUT BITCOIN ON OUR BLOG</p>
+        </div>
+      </div>
+
+      <div class="latest-blog-posts">
+
+        <article class="post" *ngFor="let post of latestPosts">
+
+          <a routerLink="[post.url]"><img class="img-responsive" [src]="post.img" alt="img"></a>
+
+          <div class="post-body">
+            <h4 class="post-title">
+              <a routerLink="[post.url]">{{ post.title }}</a>
+            </h4>
+            <div class="post-text">
+              <p>{{ post.text }}</p>
+            </div>
+          </div>
+
+          <div class="post-date">
+            <span>{{ post.day }}</span>
+            <span>{{ post.month }}</span>
+          </div>
+          <button color="primary" mat-flat-button routerLink="[]" class="btn-post">READ MORE</button>
+        </article>
       </div>
     </div>
   </section>
