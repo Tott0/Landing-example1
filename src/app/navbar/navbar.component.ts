@@ -1,9 +1,10 @@
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 import { AuthService } from '../core/providers/auth.service';
 import { UserType } from '../shared/models/user.model';
 import { AppConstants } from '@app/app-constants';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -11,6 +12,9 @@ import { AppConstants } from '@app/app-constants';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+
+  @ViewChild('fixedHeader', { read: ElementRef }) fixedHeader: ElementRef;
+  headerIsFixed = false;
 
   UserType = UserType;
 
@@ -22,6 +26,24 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
 
+    // scroll listener
+    const scrollSub = fromEvent(window, 'scroll').subscribe(event => {
+      if (!this.fixedHeader) {
+        return;
+      }
+      const zoomLimit = window.getComputedStyle(document.documentElement).getPropertyValue('--top-header-height').replace('px', '');
+      const currentClass = this.fixedHeader.nativeElement.className;
+      if (window.scrollY > +zoomLimit) {
+        if (!this.headerIsFixed) {
+          this.headerIsFixed = true;
+          this.fixedHeader.nativeElement.className += ' is-fixed';
+        }
+      } else {
+        this.headerIsFixed = false;
+        this.fixedHeader.nativeElement.className = currentClass.replace(' is-fixed', '');
+      }
+      console.log(this.fixedHeader);
+    });
   }
 
   isLoggedIn() {

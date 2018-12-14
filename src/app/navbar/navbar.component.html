@@ -91,7 +91,7 @@
         <nav class="auth-actions">
           <ul>
             <li>
-              <button class="btn-login" mat-stroked-button color="primary">
+              <button [routerLink]="['/login']" class="btn-login" mat-stroked-button color="primary">
                 <span class="icon">
                   <i class="fas fa-user"></i>
                 </span>
@@ -99,7 +99,7 @@
               </button>
             </li>
             <li>
-              <button class="btn-signup" mat-flat-button color="primary">
+              <button [routerLink]="['/signup']" class="btn-signup" mat-flat-button color="primary">
                 <span class="icon">
                   <i class="fas fa-user-plus"></i>
                 </span>
@@ -115,7 +115,7 @@
 
 
   </mat-toolbar>
-  <mat-toolbar class="fixed-toolbar">
+  <mat-toolbar class="fixed-toolbar" #fixedHeader *ngIf="isAtLanding()">
     <div class="row">
 
       <nav>

@@ -160,6 +160,10 @@
           &[disabled] {
             color: $foreground-text;
           }
+          .mat-select-arrow{
+            border-top-color: $foreground-text;
+            color: $foreground-text;
+          }
         }
         .mat-form-field-underline {
           display: none;

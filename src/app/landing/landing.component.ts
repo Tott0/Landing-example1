@@ -3,6 +3,7 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { AppConstants } from '@app/app-constants';
 import { getErrorMessage } from '@core/static-methods';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-landing',
@@ -378,39 +379,39 @@ export class LandingComponent implements OnInit, OnDestroy {
           y: 2850.70
         },
         {
-          x: '2018-10-1',
+          x: '2018-10-01',
           y: 4062.51
         },
         {
-          x: '2018-10-2',
+          x: '2018-10-02',
           y: 4174.61
         },
         {
-          x: '2018-10-3',
+          x: '2018-10-03',
           y: 4328.72
         },
         {
-          x: '2018-10-4',
+          x: '2018-10-04',
           y: 4140.37
         },
         {
-          x: '2018-10-5',
+          x: '2018-10-05',
           y: 4412.67
         },
         {
-          x: '2018-10-6',
+          x: '2018-10-06',
           y: 4136.61
         },
         {
-          x: '2018-10-7',
+          x: '2018-10-07',
           y: 4395.55
         },
         {
-          x: '2018-10-8',
+          x: '2018-10-08',
           y: 4636.35
         },
         {
-          x: '2018-10-9',
+          x: '2018-10-09',
           y: 4106.40
         },
         {
@@ -502,39 +503,39 @@ export class LandingComponent implements OnInit, OnDestroy {
           y: 2912.89
         },
         {
-          x: '2018-11-1',
+          x: '2018-11-01',
           y: 2158.68
         },
         {
-          x: '2018-11-2',
+          x: '2018-11-02',
           y: 2291.96
         },
         {
-          x: '2018-11-3',
+          x: '2018-11-03',
           y: 2302.39
         },
         {
-          x: '2018-11-4',
+          x: '2018-11-04',
           y: 2167.86
         },
         {
-          x: '2018-11-5',
+          x: '2018-11-05',
           y: 2490.51
         },
         {
-          x: '2018-11-6',
+          x: '2018-11-06',
           y: 2275.72
         },
         {
-          x: '2018-11-7',
+          x: '2018-11-07',
           y: 2501.38
         },
         {
-          x: '2018-11-8',
+          x: '2018-11-08',
           y: 2567.25
         },
         {
-          x: '2018-11-9',
+          x: '2018-11-09',
           y: 2113.13
         },
         {
@@ -622,39 +623,39 @@ export class LandingComponent implements OnInit, OnDestroy {
           y: 5085.58
         },
         {
-          x: '2018-12-1',
+          x: '2018-12-01',
           y: 5068.23
         },
         {
-          x: '2018-12-2',
+          x: '2018-12-02',
           y: 5209.28
         },
         {
-          x: '2018-12-3',
+          x: '2018-12-03',
           y: 5206.86
         },
         {
-          x: '2018-12-4',
+          x: '2018-12-04',
           y: 5251.17
         },
         {
-          x: '2018-12-5',
+          x: '2018-12-05',
           y: 5415.48
         },
         {
-          x: '2018-12-6',
+          x: '2018-12-06',
           y: 5257.10
         },
         {
-          x: '2018-12-7',
+          x: '2018-12-07',
           y: 5672.38
         },
         {
-          x: '2018-12-8',
+          x: '2018-12-08',
           y: 5755.69
         },
         {
-          x: '2018-12-9',
+          x: '2018-12-09',
           y: 5386.27
         },
         {
@@ -838,12 +839,12 @@ export class LandingComponent implements OnInit, OnDestroy {
     {
       url: 'blog-post-3',
       img: 'assets/images/blog-post-small-3.jpg',
-      title: 'Risks &amp; Rewards Of Investing In Bitcoin. Pros and Cons',
+      title: 'Risks & Rewards Of Investing In Bitcoin. Pros and Cons',
       text: 'incididunt ut labore et dolore magna aliqua. Ut enim aminim veniam, quis nostrud...',
       day: '17',
       month: 'MAR',
     }
-  ]
+  ];
 
   constructor(
     private formBuilder: FormBuilder,

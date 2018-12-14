@@ -7,7 +7,7 @@ import { NotFoundComponent } from '@app/not-found/not-found.component';
 import { NavbarComponent } from '@app/navbar/navbar.component';
 import { FooterComponent } from '@app/footer/footer.component';
 //
-// import { AuthModule } from '@app/auth/auth.module';
+import { AuthModule } from '@app/auth/auth.module';
 import { LandingModule } from '@app/landing/landing.module';
 /** */
 import { environment } from '@env/environment';
@@ -32,7 +32,7 @@ import 'hammerjs';
     //
     //
     CoreModule,
-    // AuthModule,
+    AuthModule,
     LandingModule,
     AppRoutingModule,
   ],

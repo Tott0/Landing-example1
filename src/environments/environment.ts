@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_ENDPOINT: 'https://caxtor-tonmil931210.c9users.io/',
+  API_ENDPOINT: 'https://bitcoin-trate-api.herokuapp.com/',
 };
 
 /*

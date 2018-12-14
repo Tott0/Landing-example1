@@ -101,6 +101,12 @@ header {
     @include for-tablet-landscape-up {
       height: var(--fixed-header-height);
     }
+    &.is-fixed{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
     .row{
       width: 100%;
       justify-content: center;

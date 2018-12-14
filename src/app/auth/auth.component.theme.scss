@@ -1,0 +1,42 @@
+@import '~@angular/material/theming';
+@mixin auth-component-theme($theme) {
+  $primary: map-get($map: $theme, $key: primary);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $foreground-text: mat-color($foreground, text);
+  $foreground-sec-text: mat-color($foreground, secondary-text);
+
+  .auth-wrapper{
+    .mat-card{
+      background: none;
+    }
+    .mat-card-title{
+      color: $foreground-text;
+    }
+    .mat-card-subtitle{
+    color: $foreground-sec-text;
+    }
+    .mat-form-field{
+      // background: transparentize($color: #212121, $amount: 0.15);
+      border: solid 1px mat-color(mat-palette($mat-grey), 800);
+    }
+    .btn-login{
+      color: $foreground-text;
+    }
+    .btn-forgot{
+      color: mat-color($primary, lighter);
+      &:hover{
+        color: mat-color($primary);
+      }
+    }
+    .btn-register{
+      color: $foreground-sec-text;
+      a{
+        color: mat-color($primary);
+        &:hover{
+          color: mat-color($primary, darker);
+        }
+      }
+    }
+  }
+}
