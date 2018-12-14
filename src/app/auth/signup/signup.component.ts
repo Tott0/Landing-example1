@@ -12,6 +12,7 @@ import { ResultSnackbar } from '@shared/dialogs/result-snackbar/result.snackbar'
 
 import { PersonType } from '@shared/models/user.model';
 import { DocumentFile } from '@shared/models/shared.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-signup',
@@ -27,34 +28,32 @@ export class SignupComponent implements OnInit {
 
   terms = false;
 
+  idTypes = [
+    {
+      id: 1,
+      name: 'Cédula de Ciudadanía'
+    },
+    {
+      id: 2,
+      name: 'NIT'
+    }
+  ];
+
   errors: any = {};
-  userForm: FormGroup;
-  get email() { return this.userForm.get('email'); }
-  get phoneNumber() { return this.userForm.get('phone_number'); }
-  get cellphoneNumber() { return this.userForm.get('cell_phone'); }
-  get personType() { return this.userForm.get('personType'); }
-  get passwords() { return this.userForm.get('passwords'); }
+  signupForm: FormGroup;
+  get name() { return this.signupForm.get('name'); }
+  get lastName() { return this.signupForm.get('lastName'); }
+  get identificationType() { return this.signupForm.get('identificationType'); }
+  get identification() { return this.signupForm.get('identification'); }
+  get email() { return this.signupForm.get('email'); }
+  get phoneNumber() { return this.signupForm.get('phoneNumber'); }
+  get passwords() { return this.signupForm.get('passwords'); }
   get password() { return this.passwords.get('password'); }
   get password_confirmation() { return this.passwords.get('password_confirmation'); }
 
-  get person() { return this.userForm.get('person'); }
-
-  get pName() { return this.person.get('name'); }
-  get pLastName() { return this.person.get('last_name'); }
-  get pIdentification() { return this.person.get('identification'); }
-
-  get company() { return this.userForm.get('company'); }
-  get cName() { return this.company.get('name'); }
-  get cNit() { return this.company.get('nit'); }
-  get cRlName() { return this.company.get('rl_name'); }
-  get cRlLastName() { return this.company.get('rl_last_name'); }
-  get cRlIdentification() { return this.company.get('rl_identification'); }
-
-  get renterForm() { return this.userForm.get('renter'); }
-  get matInmobiliaria() { return this.renterForm.get('matricula_inmobiliaria'); }
-  bankReference: DocumentFile;
-  // certLibTra: DocumentFile;
-  rut: DocumentFile;
+  idFront: DocumentFile;
+  idBack: DocumentFile;
+  bill: DocumentFile;
 
   constructor(
     private router: Router,
@@ -62,88 +61,29 @@ export class SignupComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private mm: ModalManager,
+    private domSanitizer: DomSanitizer,
   ) { }
 
   ngOnInit() {
-    this.userForm = this.formBuilder.group({
+    this.signupForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      identificationType: [{ value: 1 }, [Validators.required]],
+      identification: ['', [Validators.required]],
       email: ['', [Validators.required, CustomValidators.email()]],
-      phone_number: ['', [Validators.minLength(7)]],
-      cell_phone: ['', [Validators.required, Validators.minLength(7)]],
+      phoneNumber: ['', [Validators.required, Validators.minLength(7)]],
       passwords: this.formBuilder.group({
         password: ['', [Validators.required, Validators.minLength(8)]],
         password_confirmation: ['', [Validators.required, Validators.minLength(8)]],
       }, { validator: [CustomValidators.matchPasswords] }),
-
-      person: this.formBuilder.group({
-        name: ['', [Validators.required]],
-        last_name: ['', [Validators.required]],
-        identification: ['', [Validators.required, Validators.minLength(6)]],
-      }),
-
-      company: this.formBuilder.group({
-        name: ['', [Validators.required]],
-        nit: ['', [Validators.required]],
-        rl_name: ['', [Validators.required]],
-        rl_last_name: ['', [Validators.required]],
-        rl_identification: ['', [Validators.required, Validators.minLength(6)]],
-      }),
-      personType: [PersonType.NATURAL, [Validators.required]],
-
-      renter: this.formBuilder.group({
-        matricula_inmobiliaria: ['', [Validators.required]]
-      })
     });
+    this.identificationType.setValue(1);
   }
 
   onSubmit() {
     this.mm.showLoadingDialog();
-    let requestParams;
-    if (this.personType.value === PersonType.NATURAL) {
-      requestParams = {
-        person: {
-          type_document: 1, // always CC,
-          identification: this.pIdentification.value,
-          name: this.pName.value,
-          last_name: this.pLastName.value,
-          phone_number: this.phoneNumber.value,
-          cell_phone: this.cellphoneNumber.value,
-          user_attributes: {
-            email: this.email.value,
-            password: this.password.value,
-            password_confirmation: this.password_confirmation.value
-          }
-        }
-      };
-    } else {
-      requestParams = {
-        company: {
-          nit: this.cNit.value,
-          phone_number: this.phoneNumber.value,
-          cell_phone: this.cellphoneNumber.value,
-          name: this.cName.value,
-          person_attributes: {
-            type_document: 1,
-            identification: this.cRlIdentification.value,
-            name: this.cRlName.value,
-            last_name: this.cRlLastName.value,
-          },
-          user_attributes: {
-            email: this.email.value,
-            password: this.password.value,
-            password_confirmation: this.password_confirmation.value
-          }
-        }
-      };
-    }
-    if (this.willRent) {
-      const child = requestParams.company || requestParams.person;
-      child.renter_attributes = {
-        bank_reference: this.bankReference,
-        // certificado_libertad_tradicion: this.certLibTra,
-        rut: this.rut,
-        matricula_inmobiliaria: this.matInmobiliaria.value,
-      };
-    }
+    const requestParams = {};
+
     this.authService.signup(requestParams)
       .subscribe(res => {
         this.mm.closeLoadingDialog();
@@ -158,31 +98,32 @@ export class SignupComponent implements OnInit {
             };
           } else {
             this.errors = err;
-            StaticMethods.setFormErrors(this.userForm, this.errors);
+            StaticMethods.setFormErrors(this.signupForm, this.errors);
           }
         });
   }
 
   onFile(file, i) {
     console.log(file);
-    if (!file.name.includes('pdf')) {
-      this.mm.showResultSnackbar('Extensión de Archivo inválida', false);
-      return;
-    }
+    // if (!file.name.includes('pdf')) {
+    //   this.mm.showResultSnackbar('Extensión de Archivo inválida', false);
+    //   return;
+    // }
     const f = {
       file: file,
       name: file.name,
       url: URL.createObjectURL(file)
     };
+    console.log(f);
     switch (i) {
       case 0:
-        this.bankReference = f;
+        this.idFront = f;
         break;
-      // case 1:
-      //   this.certLibTra = f;
-      //   break;
+      case 1:
+        this.idBack = f;
+        break;
       case 2:
-        this.rut = f;
+        this.bill = f;
         break;
     }
   }
@@ -194,21 +135,5 @@ export class SignupComponent implements OnInit {
     } else {
       return StaticMethods.getFormError(formControl);
     }
-  }
-
-  invalidRenter() {
-    if (!this.willRent) {
-      return false;
-    }
-    return !(this.renterForm.valid && this.bankReference && this.rut);
-  }
-
-  onWillRentchange(accordion) {
-    this.renterForm.reset();
-    this.bankReference = undefined;
-    // this.certLibTra = undefined;
-    this.rut = undefined;
-    this.willRent ? accordion.open() : accordion.close();
-    console.log(this.willRent);
   }
 }

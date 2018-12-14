@@ -5,37 +5,73 @@
   $foreground: map-get($theme, foreground);
   $foreground-text: mat-color($foreground, text);
   $foreground-sec-text: mat-color($foreground, secondary-text);
-
-  .auth-wrapper{
-    .mat-card{
+  .auth-wrapper,
+  .signup-wrapper {
+    .mat-card {
       background: none;
     }
-    .mat-card-title{
+    .mat-card-title {
       color: $foreground-text;
     }
-    .mat-card-subtitle{
-    color: $foreground-sec-text;
+    .mat-card-subtitle {
+      color: $foreground-sec-text;
     }
-    .mat-form-field{
+    .mat-select-form-field {
+      .mat-form-field-flex {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+    .mat-form-field,
+    .mat-select-form-field {
       // background: transparentize($color: #212121, $amount: 0.15);
       border: solid 1px mat-color(mat-palette($mat-grey), 800);
     }
-    .btn-login{
+    .btn-login,
+    .btn-signup {
       color: $foreground-text;
     }
-    .btn-forgot{
+    .btn-forgot {
       color: mat-color($primary, lighter);
-      &:hover{
+      &:hover {
         color: mat-color($primary);
       }
     }
-    .btn-register{
+    .btn-register {
       color: $foreground-sec-text;
-      a{
+      a {
         color: mat-color($primary);
-        &:hover{
+        &:hover {
           color: mat-color($primary, darker);
         }
+      }
+    }
+    .file-input {
+      .file-input-container:not(.has-file) {
+        border: solid 1px mat-color($primary);
+        background: rgba(255, 255, 255, 0.1);
+        .input-icon {
+          i {
+            color: mat-color($primary);
+          }
+        }
+        &:hover {
+          background: mat-color($primary);
+          .input-icon {
+            i {
+              color: $foreground-text;
+            }
+          }
+        }
+      }
+      .file-input-label {
+        color: $foreground-sec-text;
+      }
+    }
+    .btn-signup{
+      color: $foreground-text;
+      &[disabled]{
+        background: transparentize($color: mat-color($primary, lighter), $amount: 0.3);
+        color: transparentize($color: $foreground-sec-text, $amount: 0.3);
       }
     }
   }

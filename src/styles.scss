@@ -13,8 +13,8 @@
   --footer-height: 55px;
   --html-font-size-xlg: 14px;
   --html-font-size-lg: 14px;
-  --html-font-size-md: 10px;
-  --html-font-size-sm: 10px;
+  --html-font-size-md: 12px;
+  --html-font-size-sm: 12px;
   --color-light: #FAFAFA;
   --color-dark: #212121;
   --color-dark-rgb: 23, 23, 23;
@@ -99,7 +99,16 @@ body {
   width: 100%;
   margin: 0 auto;
   align-self: center;
-  @include for-desktop-up {
+  @include for-all-phones{
+    max-width: 540px !important;
+  }
+  @include for-tablet-portrait-up{
+    width: 750px !important;
+  }
+  @include for-tablet-landscape-up {
+    width: 950px !important;
+  }
+  @include for-big-desktop-up {
     width: 1200px !important;
   }
 }

@@ -313,7 +313,7 @@
           <input matInput type="text" [ngModel]="currValue" readonly>
         </mat-form-field>
 
-        <mat-form-field class="mat-select-form">
+        <mat-form-field class="mat-select-form-field">
           <mat-select [(value)]="selectedCurrencyIndex" (change)="onCurrencyChange(currs[i])">
             <mat-option *ngFor="let curr of currs; let i = index;" [value]="i">
               {{curr.code}}
