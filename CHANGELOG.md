@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/tott0/Landing-example1/compare/v0.6.0...v0.7.0) (2019-01-10)
+
+
+### Features
+
+* asd ([344002b](https://github.com/tott0/Landing-example1/commit/344002b))
+* Landing ([dd0f1c8](https://github.com/tott0/Landing-example1/commit/dd0f1c8))
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](/compare/v0.5.0...v0.6.0) (2019-01-10)
 
