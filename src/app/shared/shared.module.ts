@@ -27,6 +27,8 @@ import { UICarouselModule } from '@shared/components/UiCarousel/ui-carousel.modu
 
 /*Libraries */
 import { ChartsModule } from 'ng2-charts';
+import { QuillModule } from 'ngx-quill'
+
 
 
 
@@ -78,7 +80,8 @@ import { ChartsModule } from 'ng2-charts';
     EnumPositionTypePipe,
     //
     UICarouselModule,
-    ChartsModule
+    ChartsModule,
+    QuillModule,
   ],
   entryComponents: [
     LoadingDialog,

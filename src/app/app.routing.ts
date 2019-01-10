@@ -13,6 +13,10 @@ const appRoutes: Routes = [
   { path: 'login', component: AuthComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'forgot', component: ForgotComponent },
+  {
+    path: 'blog',
+    loadChildren: 'app/blogs/blog.module#BlogModule',
+  },
   { path: '', component: LandingComponent },
   { path: '**', component: NotFoundComponent },
 ];

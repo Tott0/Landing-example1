@@ -66,7 +66,7 @@ import { fromEvent } from 'rxjs';
         style({
           transform: 'translateX(0)'
         }),
-        animate('6000s ease-in-out', style({
+        animate('600ms ease-in-out', style({
           transform: 'translateX(100%)'
         }))
       ]),
@@ -900,6 +900,13 @@ export class LandingComponent implements OnInit, OnDestroy {
     console.log('prev ' + prevIndex, this.carouselItems[prevIndex].animState);
     console.log('sel ' + this.carouselIndex, this.carouselItems[this.carouselIndex].animState);
     console.groupEnd();
+  }
+
+  chartHovered(ev){
+    console.log(ev);
+  }
+  chartClicked(ev){
+    console.log(ev);
   }
 
 }

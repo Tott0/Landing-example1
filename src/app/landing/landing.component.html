@@ -74,7 +74,7 @@
     <div class="container">
 
       <div class="text-center">
-        <h2 class="title-head">About <span class="highlight primary">Us</span></h2>
+        <h2 class="title-head">ABOUT <span class="highlight primary">US</span></h2>
         <div class="title-head-subtitle">
           <p>A COMMERCIAL WEBSITE THAT LISTS WALLETS, EXCHANGES AND OTHER BITCOIN RELATED INFO</p>
         </div>
@@ -91,25 +91,31 @@
             your Visa/MasterCard or bank transfer. Instant buy/sell of Bitcoins at fair price is guaranteed. Nothing
             extra. Join over 700,000 users from all over the world satisfied with our services.</p>
           <ul class="nav">
-            <li [ngClass]="{'active': selectedAboutTab === 0}"><a (click)="selectAboutTab(0)">OUR MISSION</a></li>
-            <li [ngClass]="{'active': selectedAboutTab === 1}"><a (click)="selectAboutTab(1)">OUR ADVANTAGES</a></li>
+            <li [ngClass]="{'active': selectedAboutTab === 0}"><a (click)="selectAboutTab(0)">NUESTRA VISIÓN</a></li>
+            <li [ngClass]="{'active': selectedAboutTab === 1}"><a (click)="selectAboutTab(1)">MISIÓN</a></li>
             <li [ngClass]="{'active': selectedAboutTab === 2}"><a (click)="selectAboutTab(2)">OUR GUARANTEES</a></li>
           </ul>
           <div class="content">
             <div [@fadeInOut]="'in'" *ngIf="selectedAboutTab === 0">
-              <p>Bitcoin is based on a protocol known as the blockchain, which allows to create, transfer and verify
-                ultra-secure financial data without interference of third parties.</p>
+              <p>Ser reconocida en el 2018 como un modelo de negocio internacional en el mercado financiero de compra y
+                venta de criptomonedas caracterizada por una eficiente y dinamica gestion administrativa apoyada en el
+                desempeño de un equipo calificado y experimentado, motivado en una constante busqueda de estrategias y
+                acciones que contribuyan al cumplimient oportuno de la rentabilidad de los socios.</p>
             </div>
             <div [@fadeInOut]="'in'" *ngIf="selectedAboutTab === 1">
-              <p>Our mission as an official partner of Bitcoin Foundation is to help you enter and better understand
-                the world of #1 cryptocurrency and avoid any issues you may encounter.</p>
+              <p>Somos una alternativa estrategica financiera dedicadaa a la comercializacion de criptomonedas que
+                busca satisfacer las necesidades de nuestros clientes, mediante la innovacion, soporte y calidad de
+                nuestra plataforma tecnologica; nuestra empresa tiene un alto compromiso con la comunidad con la que se
+                relaciona, generando oportunidades de alcanzar libertad financiera, apoyandonos con un equipo idoneo y
+                experimentado, con el fin de cumplir eficaz y oportunamente las metas trazadas y contribuir al
+                mejoramiento economico de nuestros socios donde actuamos.</p>
             </div>
             <div [@fadeInOut]="'in'" *ngIf="selectedAboutTab === 2">
               <p>We are here because we are passionate about open, transparent markets and aim to be a major driving
                 force in widespread adoption, we are the first and the best in cryptocurrency. </p>
             </div>
           </div>
-          <button mat-flat-button color="primary" routerLink="['about-us']" class="btn-read">READ MORE</button>
+          <!-- <button mat-flat-button color="primary" routerLink="['about-us']" class="btn-read">READ MORE</button> -->
         </div>
       </div>
     </div>
@@ -124,32 +130,32 @@
           <span class="feature-icon">
             <img id="strong-security" src="/assets/images/strong-security.png" alt="strong security">
           </span>
-          <h3 class="trait-title">STRONG SECURITY</h3>
-          <p>Protection against DDoS attacks, <br>full data encryption</p>
+          <h3 class="trait-title">SEGURIDAD</h3>
+          <p>Protección contra ataques DDoS, <br>Encriptación completa de datos</p>
         </div>
 
         <div class="trait text-center">
           <span class="feature-icon">
             <img id="world-coverage" src="/assets/images/world-coverage.png" alt="world coverage">
           </span>
-          <h3 class="trait-title">WORLD COVERAGE</h3>
-          <p>Providing services in 99% countries<br> around all the globe</p>
+          <h3 class="trait-title">CUBRIMIENTO</h3>
+          <p>Proveemos servicio en 99% de los Paises <br> alrededor del mundo</p>
         </div>
 
         <div class="trait text-center">
           <span class="feature-icon">
             <img id="payment-options" src="/assets/images/payment-options.png" alt="payment options">
           </span>
-          <h3 class="trait-title">PAYMENT OPTIONS</h3>
-          <p>Popular methods: Visa, MasterCard, <br>bank transfer, cryptocurrency</p>
+          <h3 class="trait-title">OPCIONES DE PAGO</h3>
+          <p>Consignación <br>Transferencia Bancaria</p>
         </div>
 
         <div class="trait text-center">
           <span class="feature-icon">
             <img id="mobile-app" src="/assets/images/mobile-app.png" alt="mobile app">
           </span>
-          <h3 class="trait-title">MOBILE APP</h3>
-          <p>Trading via our Mobile App, Available<br> in Play Store &amp; App Store</p>
+          <h3 class="trait-title">APP MÓVIL</h3>
+          <p>Cálcula tus transacciones a través de nuestra App<br> Disponible en Play Store &amp; App Store</p>
         </div>
 
         <div class="trait text-center">
@@ -326,7 +332,7 @@
     </div>
   </section>
 
-  <section class="team-section">
+  <!-- <section class="team-section">
     <div class="container">
 
       <div class="col title-col text-center">
@@ -359,7 +365,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section class="section-chart">
     <div class="row">
@@ -520,8 +526,7 @@
           <ul class="row social-footer">
             <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
             <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#" target="_blank"><i class="fab fa-google-plus"></i></a></li>
-            <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
           </ul>
 
         </article>
@@ -549,7 +554,7 @@
 
         <article class="payment-logos">
 
-          <hr>
+          <!-- <hr>
 
           <h4 class="payment-title">SUPPORTED PAYMENT METHODS</h4>
 
@@ -559,7 +564,7 @@
             <img src="assets/images/visa.png" alt="visa">
             <img src="assets/images/paypal.png" alt="paypal">
             <img class="last" src="assets/images/maestro.png" alt="maestro">
-          </div>
+          </div> -->
 
         </article>
       </div>

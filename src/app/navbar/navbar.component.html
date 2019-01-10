@@ -127,10 +127,7 @@
           <li>
             <a [matMenuTriggerFor]="menu">BLOG <i class="fas fa-caret-down"></i></a>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item>RIGHT SIDEBAR</button>
-              <button mat-menu-item>LEFT SIDEBAR</button>
-              <button mat-menu-item>GRID NO SIDEBAR</button>
-              <button mat-menu-item>SINGLE POST</button>
+              <button mat-menu-item [routerLink]="['blog']">CREAR</button>
             </mat-menu>
           </li>
           <li class="dropdown">

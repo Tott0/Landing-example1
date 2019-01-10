@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
         this.headerIsFixed = false;
         this.fixedHeader.nativeElement.className = currentClass.replace(' is-fixed', '');
       }
-      console.log(this.fixedHeader);
+      // console.log(this.fixedHeader);
     });
   }
 

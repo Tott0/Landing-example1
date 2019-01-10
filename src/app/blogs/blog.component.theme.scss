@@ -1,0 +1,17 @@
+@import '~@angular/material/theming';
+@mixin blog-component-theme($theme) {
+  $primary: map-get($map: $theme, $key: primary);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $foreground-text: mat-color($foreground, text);
+  $foreground-sec-text: mat-color($foreground, secondary-text);
+  .blog-wrapper {
+    mat-card {
+      background: mat-color(mat-palette($mat-grey), 50);
+      color: var(--color-dark);
+    }
+    .mat-card-title{
+      color: var(--color-dark);
+    }
+  }
+}

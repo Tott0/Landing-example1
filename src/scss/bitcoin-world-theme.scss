@@ -3,6 +3,7 @@
 @import '../app/footer/footer.component.theme.scss';
 @import '../app/landing/landing.component.theme.scss';
 @import '../app/auth/auth.component.theme.scss';
+@import '../app/blogs/blog.component.theme.scss';
 @import './global.theme.scss';
 // Plus imports for other components in your app.
 
@@ -22,6 +23,7 @@ $caxtor-theme:   mat-dark-theme($caxtor-primary, $caxtor-accent);
   @include footer-component-theme($theme);
   @include landing-component-theme($theme);
   @include auth-component-theme($theme);
+  @include blog-component-theme($theme);
 }
 
 // Include the default theme styles.

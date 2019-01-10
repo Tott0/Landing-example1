@@ -28,9 +28,11 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/scss/bitcoin-world-theme.scss"
+              "src/scss/bitcoin-world-theme.scss",
+              "node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": [
+              "node_modules/quill/dist/quill.min.js"
             ]
           },
           "configurations": {

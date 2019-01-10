@@ -206,8 +206,11 @@
         align-items: flex-start;
         line-height: 190%;
         .content {
-          flex: 1 0 0;
-          min-height: 70px;
+          flex: 1 0 190px;
+          // min-height: 70px;
+          p{
+            margin: 0;
+          }
         }
         ul.nav {
           padding: 0;
@@ -216,6 +219,7 @@
             margin: 0;
             padding: 0;
             text-decoration: none;
+            list-style: none;
             &:not(:first-of-type) {
               a {
                 padding-left: 1.75em;
@@ -251,14 +255,14 @@
         grid-template-rows: 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr;
         grid-row-gap: 1.5em;
-        @include for-big-desktop-up {
-          padding-left: 20%;
+        @include for-tablet-landscape-up {
+          padding-left: 12em;
         }
         @include for-desktop-up {
           padding-left: 7em;
         }
-        @include for-tablet-landscape-up {
-          padding-left: 12em;
+        @include for-big-desktop-up {
+          padding-left: 20%;
         }
         .trait {
           display: flex;
@@ -269,12 +273,13 @@
             height: 37px;
           }
           .trait-title {
-            margin: 0.75em 0;
+            margin: 0.5em 0;
             font-weight: 600;
             font-size: 1em;
           }
           p {
             font-size: 0.9em;
+            margin: 0;
             margin-bottom: 0.5em;
             font-weight: 400;
           }
