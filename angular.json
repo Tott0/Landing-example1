@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "BitcoinWorldWeb": {
+    "LandingExample": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,13 +17,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/BitcoinWorldWeb",
+            "outputPath": "dist/LandingExample",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/favicon.png",
+              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "BitcoinWorldWeb:build"
+            "browserTarget": "LandingExample:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "BitcoinWorldWeb:build:production"
+              "browserTarget": "LandingExample:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "BitcoinWorldWeb:build"
+            "browserTarget": "LandingExample:build"
           }
         },
         "test": {
@@ -110,7 +110,7 @@
         }
       }
     },
-    "BitcoinWorldWeb-e2e": {
+    "LandingExample-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -119,11 +119,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "BitcoinWorldWeb:serve"
+            "devServerTarget": "LandingExample:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "BitcoinWorldWeb:serve:production"
+              "devServerTarget": "LandingExample:serve:production"
             }
           }
         },
@@ -139,5 +139,5 @@
       }
     }
   },
-  "defaultProject": "BitcoinWorldWeb"
+  "defaultProject": "LandingExample"
 }
